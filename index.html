@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake website detector</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- design -->
+     <div class="bg-glow glow-1"></div>
+  <div class="bg-glow glow-2"></div>
+  <!-- navbar -->
+    <header class="navbar">
+    <div class="logo">
+      <span class="logo-icon">🛡️</span>
+      <span class="logo-text">Phish<span class="accent">Guard</span></span>
+    </div>
+    <div class="status-pill">
+      <span class="pulse-dot"></span> System Active
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Hero -->
+      <section class="hero">
+      <h1>Fake Website & <span class="accent">Phishing Link</span> Detector</h1>
+      <p class="hero-sub">
+        Paste any link below. We analyze the URL pattern and explain
+        exactly why it looks safe or suspicious.
+      </p>
+    </section>
+    <!-- Dashboard -->
+    <section class="boxes">
+      <div class="card box">
+        <div class="icon">📊</div>
+        <div>
+          <h3 id="stat-total">0</h3>
+          <p>Total Scans</p>
+        </div>
+      </div>
+
+      <div class="card box low">
+        <div class="icon">✅</div>
+        <div>
+          <h3 id="stat-low">0</h3>
+          <p>Low Risk</p>
+        </div>
+      </div>
+
+      <div class="card box medium">
+        <div class="icon">⚠️</div>
+        <div>
+          <h3 id="stat-medium">0</h3>
+          <p>Medium Risk</p>
+        </div>
+      </div>
+
+      <div class="card box high">
+        <div class="icon">🚨</div>
+        <div>
+          <h3 id="stat-high">0</h3>
+          <p>High Risk</p>
+        </div>
+      </div>
+    </section>
+    <!-- scanner -->
+     <section class="card scanner">
+      <h2>🔍 URL Scanner</h2>
+
+      <div class="input-row">
+        <input
+          type="text"
+          id="url-input"
+          placeholder="Paste a link here, e.g. https://example.com"
+          autocomplete="off"
+        />
+        <button id="scan-btn">Scan Now</button>
+      </div>
+
+      <p id="url-error" class="error-text"></p>
+
+      <p class="note">
+        🔒 We never open or visit the link. Only the text of the URL is checked.
+      </p>
+    </section>
+    <!-- resul in starting hidden -->
+       <section id="result-section" class="card result hidden">
+      <h2>📋 Scan Result</h2>
+
+      <p class="scanned-url">Scanned: <span id="scanned-url"></span></p>
+
+      <div class="result-top">
+        <div class="score-circle" id="score-circle">
+          <span id="score-number">0</span>
+          <small>/ 100</small>
+        </div>
+          <div class="result-info">
+          <span id="risk-badge" class="risk-badge">Low Risk</span>
+          <p id="risk-summary"></p>
+        </div>
+      </div>
+
+      <div class="risk-bar">
+        <div id="risk-bar-fill" class="risk-bar-fill"></div>
+      </div>
+         <h3 class="sub-heading">Security Checks</h3>
+      <div class="checks-grid">
+        <div class="check-item" id="check-https">
+          <span class="check-icon">🔐</span>
+          <div>
+            <h4>HTTPS</h4>
+            <p class="check-status">-</p>
+          </div>
+        </div>
+
+        <div class="check-item" id="check-ip">
+          <span class="check-icon">🌐</span>
+          <div>
+             <h4>IP Address URL</h4>
+            <p class="check-status">-</p>
+          </div>
+        </div>
+
+        <div class="check-item" id="check-keywords">
+          <span class="check-icon">🔑</span>
+          <div>
+            <h4>Suspicious Keywords</h4>
+            <p class="check-status">-</p>
+          </div>
+        </div>
+
+        <div class="check-item" id="check-length">
+          <span class="check-icon">📏</span>
+          <div>
+            <h4>URL Length</h4>
+            <p class="check-status">-</p>
+          </div>
+        </div>
+
+        <div class="check-item" id="check-subdomain">
+          <span class="check-icon">🧩</span>
+          <div>
+            <h4>Subdomains</h4>
+            <p class="check-status">-</p>
+          </div>
+        </div>
+
+        <div class="check-item" id="check-symbols">
+          <span class="check-icon">❗</span>
+          <div>
+            <h4>Unusual Symbols</h4>
+            <p class="check-status">-</p>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="sub-heading">Why this score?</h3>
+      <ul id="reasons-list" class="reasons-list"></ul>
+ <div class="disclaimer">
+        ⚠️ <strong>Important:</strong> This is an educational URL-pattern checker.
+        A Low Risk result does <strong>not</strong> mean the website is 100% safe,
+        and HTTPS alone does not prove a site is genuine.
+        Always be careful before entering passwords or payment details.
+      </div>
+    </section>
+    <!-- scan history column -->
+      <section class="card history">
+      <div class="history-header">
+        <h2>🕘 Scan History</h2>
+        <button id="clear-btn" class="clear-btn">Clear History</button>
+      </div>
+
+      <p id="empty-history" class="empty-text">No scans yet. Scan a URL to see it here.</p>
+
+      <ul id="history-list" class="history-list"></ul>
+    </section>
+
+  </main>
+  <!-- footer -->
+
+  <footer class="footer">
+    <p>PhishGuard • B.Tech Minor Project • Built with HTML, CSS & JavaScript</p>
+    <p class="footer-note">Educational tool only. Not a guaranteed phishing detector.</p>
+  </footer>
+
+  <!-- JavaScript file -->
+  <script src="script.js"></script>
+</body>
+</html>
+</body>
+   
